@@ -9,6 +9,46 @@
 -- Make split separators visible even after colorscheme changes
 local group = vim.api.nvim_create_augroup("MyUIOverrides", { clear = true })
 
+local function set_indent_visibility(active)
+  if active then
+    vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#5b6078" })
+    vim.api.nvim_set_hl(0, "SnacksIndent1", { fg = "#5b6078" })
+    vim.api.nvim_set_hl(0, "SnacksIndent2", { fg = "#5b6078" })
+    vim.api.nvim_set_hl(0, "SnacksIndent3", { fg = "#5b6078" })
+    vim.api.nvim_set_hl(0, "SnacksIndent4", { fg = "#5b6078" })
+    vim.api.nvim_set_hl(0, "SnacksIndent5", { fg = "#5b6078" })
+    vim.api.nvim_set_hl(0, "SnacksIndent6", { fg = "#5b6078" })
+    vim.api.nvim_set_hl(0, "SnacksIndent7", { fg = "#5b6078" })
+    vim.api.nvim_set_hl(0, "SnacksIndent8", { fg = "#5b6078" })
+    vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#d4d9e6", nocombine = true })
+    vim.api.nvim_set_hl(0, "SnacksIndentChunk", { fg = "#d4d9e6", nocombine = true })
+  else
+    -- Very subtle fallback (~5% visibility feeling)
+    vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#2e3244" })
+    vim.api.nvim_set_hl(0, "SnacksIndent1", { fg = "#2e3244" })
+    vim.api.nvim_set_hl(0, "SnacksIndent2", { fg = "#2e3244" })
+    vim.api.nvim_set_hl(0, "SnacksIndent3", { fg = "#2e3244" })
+    vim.api.nvim_set_hl(0, "SnacksIndent4", { fg = "#2e3244" })
+    vim.api.nvim_set_hl(0, "SnacksIndent5", { fg = "#2e3244" })
+    vim.api.nvim_set_hl(0, "SnacksIndent6", { fg = "#2e3244" })
+    vim.api.nvim_set_hl(0, "SnacksIndent7", { fg = "#2e3244" })
+    vim.api.nvim_set_hl(0, "SnacksIndent8", { fg = "#2e3244" })
+    vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#3b4057", nocombine = true })
+    vim.api.nvim_set_hl(0, "SnacksIndentChunk", { fg = "#3b4057", nocombine = true })
+  end
+end
+
+local function is_edit_window(win)
+  if not vim.api.nvim_win_is_valid(win) then
+    return false
+  end
+  if vim.api.nvim_win_get_config(win).relative ~= "" then
+    return false
+  end
+  local buf = vim.api.nvim_win_get_buf(win)
+  return vim.bo[buf].buftype == ""
+end
+
 local function apply_ui()
   -- Keep editor background transparent even after colorscheme reloads
   vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
@@ -21,8 +61,8 @@ local function apply_ui()
   vim.opt.pumblend = 0
 
   -- Splits
-  vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#ff9e64", bold = true })
-  vim.api.nvim_set_hl(0, "VertSplit", { fg = "#ff9e64", bold = true })
+  vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#565f89", bold = false })
+  vim.api.nvim_set_hl(0, "VertSplit", { fg = "#565f89", bold = false })
 
   -- Cursor
   vim.opt.guicursor =
@@ -36,32 +76,23 @@ local function apply_ui()
   -- CursorLine
   vim.api.nvim_set_hl(0, "CursorLine", { bg = "#262837" })
   vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#62a54e", bold = true })
+  set_indent_visibility(true)
 end
 
 vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter", "UIEnter" }, {
   group = group,
   callback = function()
-    vim.schedule(apply_ui)
+    pcall(apply_ui)
   end,
 })
 
 local tweaks = vim.api.nvim_create_augroup("MyUIViewTweaks", { clear = true })
 
-local function is_edit_window(win)
-  if not vim.api.nvim_win_is_valid(win) then
-    return false
-  end
-  if vim.api.nvim_win_get_config(win).relative ~= "" then
-    return false
-  end
-  local buf = vim.api.nvim_win_get_buf(win)
-  return vim.bo[buf].buftype == ""
-end
-
 local function refresh_window_focus()
   local current = vim.api.nvim_get_current_win()
+  local active_edit = is_edit_window(current)
+  set_indent_visibility(active_edit)
   for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-    vim.wo[win].winhighlight = ""
     if is_edit_window(win) then
       local active = win == current
       vim.wo[win].cursorline = active
@@ -77,7 +108,7 @@ end
 vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufEnter", "TabEnter", "FocusGained", "WinNew" }, {
   group = tweaks,
   callback = function()
-    vim.schedule(refresh_window_focus)
+    pcall(refresh_window_focus)
   end,
 })
 

@@ -4,13 +4,13 @@
 vim.g.have_nerd_font = true
 
 vim.opt.fillchars = {
-  horiz = "━",       -- Linie zwischen Terminal und Code
-  horizup = "┻",
-  horizdown = "┳",
-  vert = "┃",        -- Linie zwischen Explorer und Code
-  vertleft = "┫",
-  vertright = "┣",
-  verthoriz = "╋",
+  horiz = "─", -- Linie zwischen Terminal und Code
+  horizup = "┴",
+  horizdown = "┬",
+  vert = "│", -- Linie zwischen Explorer und Code
+  vertleft = "┤",
+  vertright = "├",
+  verthoriz = "┼",
   foldopen = "▾",
   foldclose = "▸",
   foldsep = " ",
@@ -19,9 +19,13 @@ vim.opt.fillchars = {
   eob = " ",
 }
 
-vim.api.nvim_set_hl(0, "WinSeparator", { 
-  fg = "#ff9e64", 
-  bold = true 
+vim.api.nvim_set_hl(0, "WinSeparator", {
+  fg = "#565f89",
+  bold = false,
+})
+vim.api.nvim_set_hl(0, "VertSplit", {
+  fg = "#565f89",
+  bold = false,
 })
 vim.opt.splitbelow = true
 vim.opt.splitright = true
