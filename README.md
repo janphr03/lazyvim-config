@@ -47,3 +47,26 @@ nvim
 ```
 
 Beim ersten Start installiert LazyVim automatisch die Plugins.
+
+## 7) Kompletten `lua`-Ordner aus Backup uebernehmen
+
+Wenn du wirklich den kompletten Stand uebernehmen willst (frisches Setup + dein kompletter `lua`-Ordner):
+
+```bash
+rm -rf ~/.config/nvim/lua
+cp -a /pfad/zu/deinem_backup/lua ~/.config/nvim/
+```
+
+Optional (falls ebenfalls angepasst): `init.lua` und `lazy-lock.json` aus deinem Backup mit uebernehmen.
+
+## 8) FiraCode Nerd Font installieren
+
+FiraCode Nerd Font (ZIP):
+https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
+
+Schritte:
+1. ZIP herunterladen.
+2. ZIP entpacken.
+3. Alle `.ttf`-Dateien markieren.
+4. Installieren (z. B. per Doppelklick -> "Installieren").
+5. Danach die Schrift im Terminal-Profil auf "FiraCode Nerd Font" stellen.
