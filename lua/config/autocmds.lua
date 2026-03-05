@@ -61,6 +61,7 @@ end
 local function refresh_window_focus()
   local current = vim.api.nvim_get_current_win()
   for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    vim.wo[win].winhighlight = ""
     if is_edit_window(win) then
       local active = win == current
       vim.wo[win].cursorline = active
@@ -73,7 +74,7 @@ local function refresh_window_focus()
   end
 end
 
-vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufEnter", "TabEnter", "FocusGained" }, {
+vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufEnter", "TabEnter", "FocusGained", "WinNew" }, {
   group = tweaks,
   callback = function()
     vim.schedule(refresh_window_focus)
