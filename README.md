@@ -1,6 +1,5 @@
 # Neovim Config (LazyVim)
 
-Installationsanleitung wie am **04.03.2026** durchgeführt (Step by Step):
 
 ## 1) Systempakete installieren
 
