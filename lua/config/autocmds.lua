@@ -10,6 +10,16 @@
 local group = vim.api.nvim_create_augroup("MyUIOverrides", { clear = true })
 
 local function apply_ui()
+  -- Keep editor background transparent even after colorscheme reloads
+  vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+  vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+  vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+  vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+  vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
+  vim.opt.winblend = 0
+  vim.opt.pumblend = 0
+
   -- Splits
   vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#ff9e64", bold = true })
   vim.api.nvim_set_hl(0, "VertSplit", { fg = "#ff9e64", bold = true })
@@ -24,7 +34,7 @@ local function apply_ui()
   vim.api.nvim_set_hl(0, "rCursor", { fg = "#222436", bg = "#ebf0eb" })
 
   -- CursorLine
-  vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2d2f3b" })
+  vim.api.nvim_set_hl(0, "CursorLine", { bg = "#262837" })
   vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#62a54e", bold = true })
 end
 
