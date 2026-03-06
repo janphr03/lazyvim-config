@@ -15,6 +15,7 @@ return {
         local self_fg = c.red1 or "#f7768e"
         local class_fg = c.blue1 or c.blue or "#7aa2f7"
         local orange = c.orange or "#ff9e64"
+        local string_fg = "#769c4a"
         local scope_line = "#d4d9e6"
         local indent_line = "#5b6078"
 
@@ -26,11 +27,11 @@ return {
         hl["@function.method"] = { fg = plain }
         hl["@function.builtin"] = { fg = plain }
 
-        hl.String = { fg = plain }
-        hl.Character = { fg = plain }
-        hl["@string"] = { fg = plain }
-        hl["@string.escape"] = { fg = plain }
-        hl["@string.regex"] = { fg = plain }
+        hl.String = { fg = string_fg }
+        hl.Character = { fg = string_fg }
+        hl["@string"] = { fg = string_fg }
+        hl["@string.escape"] = { fg = string_fg }
+        hl["@string.regex"] = { fg = string_fg }
         hl.Number = { fg = plain }
         hl.Boolean = { fg = plain }
         hl.Constant = { fg = plain }

@@ -6,6 +6,10 @@ return {
       opts.picker = opts.picker or {}
       opts.picker.sources = opts.picker.sources or {}
       opts.picker.sources.explorer = opts.picker.sources.explorer or {}
+
+      -- Always show dotfiles like .gitignore
+      opts.picker.sources.explorer.hidden = true
+
       opts.picker.sources.explorer.git_status = true
       opts.picker.sources.explorer.git_status_open = true
       opts.picker.sources.explorer.git_untracked = true
@@ -29,6 +33,13 @@ return {
     end,
     keys = {
       { "<leader>e", function() require("snacks").picker.explorer() end, desc = "Explorer (Snacks)" },
+      {
+        "<leader>E",
+        function()
+          require("snacks").picker.explorer({ cwd = vim.fn.expand("~/.config/nvim") })
+        end,
+        desc = "Explorer (~/.config/nvim)",
+      },
     },
   },
 }
