@@ -13,7 +13,7 @@ return {
       on_highlights = function(hl, c)
         local plain = c.fg
         local self_fg = c.red1 or "#f7768e"
-        local class_fg = c.blue1 or c.blue or "#7aa2f7"
+        local class_fg = "#ff8fd1"
         local orange = c.orange or "#ff9e64"
         local string_fg = "#769c4a"
         local scope_line = "#d4d9e6"
@@ -83,8 +83,13 @@ return {
         hl.Type = { fg = class_fg }
         hl["@type"] = { fg = class_fg }
         hl["@type.builtin"] = { fg = class_fg }
+        hl["@type.definition"] = { fg = class_fg }
         hl["@constructor"] = { fg = class_fg }
         hl["@lsp.type.class"] = { fg = class_fg }
+        hl["@lsp.type.class.python"] = { fg = class_fg }
+        hl["@lsp.type.class.lua"] = { fg = class_fg }
+        hl["@lsp.type.class.javascript"] = { fg = class_fg }
+        hl["@lsp.type.class.typescript"] = { fg = class_fg }
         hl["@lsp.type.interface"] = { fg = class_fg }
         hl["@lsp.type.struct"] = { fg = class_fg }
         hl["@lsp.type.type"] = { fg = class_fg }

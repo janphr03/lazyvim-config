@@ -8,6 +8,29 @@
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 -- Make split separators visible even after colorscheme changes
 local group = vim.api.nvim_create_augroup("MyUIOverrides", { clear = true })
+local class_pink = "#ff8fd1"
+
+local function set_class_highlights()
+  local groups = {
+    "Type",
+    "@type",
+    "@type.builtin",
+    "@type.definition",
+    "@constructor",
+    "@lsp.type.class",
+    "@lsp.type.class.python",
+    "@lsp.type.class.lua",
+    "@lsp.type.class.javascript",
+    "@lsp.type.class.typescript",
+    "@lsp.type.interface",
+    "@lsp.type.struct",
+    "@lsp.type.type",
+  }
+
+  for _, group_name in ipairs(groups) do
+    vim.api.nvim_set_hl(0, group_name, { fg = class_pink })
+  end
+end
 
 local function set_indent_visibility(active)
   if active then
@@ -76,6 +99,7 @@ local function apply_ui()
   -- CursorLine
   vim.api.nvim_set_hl(0, "CursorLine", { bg = "#262837" })
   vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#62a54e", bold = true })
+  set_class_highlights()
   set_indent_visibility(true)
 end
 
