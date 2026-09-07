@@ -88,10 +88,9 @@ local function apply_ui()
   vim.api.nvim_set_hl(0, "VertSplit", { fg = "#565f89", bold = false })
 
   -- Cursor
-  vim.opt.guicursor =
-    "n-v-c:block-Cursor-blinkon0," ..
-    "i-ci-ve:ver35-iCursor-blinkwait200-blinkon250-blinkoff250," ..
-    "r-cr-o:hor20-rCursor-blinkon0"
+  vim.opt.guicursor = "n-v-c:block-Cursor-blinkon0,"
+    .. "i-ci-ve:ver35-iCursor-blinkwait200-blinkon250-blinkoff250,"
+    .. "r-cr-o:hor20-rCursor-blinkon0"
   vim.api.nvim_set_hl(0, "Cursor", { fg = "#222436", bg = "#ebf0eb" })
   vim.api.nvim_set_hl(0, "iCursor", { fg = "#222436", bg = "#ebf0eb" })
   vim.api.nvim_set_hl(0, "rCursor", { fg = "#222436", bg = "#ebf0eb" })
@@ -180,3 +179,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 apply_ui()
+
+-- Add the workspace-aware LSP rename to the right-click menu after LazyVim is ready.
+require("config.popup_rename")

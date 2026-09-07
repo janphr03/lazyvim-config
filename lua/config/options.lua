@@ -19,16 +19,10 @@ vim.opt.fillchars = {
   eob = " ",
 }
 
-vim.api.nvim_set_hl(0, "WinSeparator", {
-  fg = "#565f89",
-  bold = false,
-})
-vim.api.nvim_set_hl(0, "VertSplit", {
-  fg = "#565f89",
-  bold = false,
-})
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.cursorline = true
 vim.opt.foldcolumn = "1"
 vim.opt.spelllang = { "de", "en" }
+vim.opt.mouse = "a"
+vim.opt.mousemodel = "popup_setpos"
