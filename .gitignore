@@ -6,3 +6,6 @@ debug
 foo.*
 *.log
 data
+.nvimlog
+FETCH_HEAD
+lua_backup/

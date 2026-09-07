@@ -14,10 +14,8 @@ return {
       opts.picker.sources.explorer.git_status_open = true
       opts.picker.sources.explorer.git_untracked = true
       opts.picker.sources.explorer.icons = opts.picker.sources.explorer.icons or {}
-      opts.picker.sources.explorer.icons.git = vim.tbl_deep_extend(
-        "force",
-        opts.picker.sources.explorer.icons.git or {},
-        {
+      opts.picker.sources.explorer.icons.git =
+        vim.tbl_deep_extend("force", opts.picker.sources.explorer.icons.git or {}, {
           enabled = true,
           added = "● ",
           modified = "M ",
@@ -27,12 +25,17 @@ return {
           staged = "● ",
           untracked = "● ",
           ignored = "◌ ",
-        }
-      )
+        })
       return opts
     end,
     keys = {
-      { "<leader>e", function() require("snacks").picker.explorer() end, desc = "Explorer (Snacks)" },
+      {
+        "<leader>e",
+        function()
+          require("snacks").picker.explorer()
+        end,
+        desc = "Explorer (Snacks)",
+      },
       {
         "<leader>E",
         function()
