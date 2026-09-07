@@ -91,8 +91,8 @@ Falls die Installation unterbrochen wurde:
 
 ## Bedienung lernen
 
-Auf dem Startbildschirm gibt es den Eintrag `Hilfe (Deutsch)`. Alternativ jederzeit
-`F1` drücken. Die Hilfe ist nach folgenden Themen gegliedert:
+Auf dem Startbildschirm steht direkt `Hilfe öffnen · F1 oder Space h`. Die Hilfe ist
+nach folgenden Themen gegliedert:
 
 1. Start und Bedienlogik
 2. Bewegung

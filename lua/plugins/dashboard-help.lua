@@ -9,7 +9,7 @@ return {
       table.insert(opts.dashboard.preset.keys, 1, {
         icon = "󰋖 ",
         key = "h",
-        desc = "Hilfe (Deutsch)",
+        desc = "Hilfe öffnen · F1 oder Space h",
         action = ":Hilfe",
       })
       return opts
