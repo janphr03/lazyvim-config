@@ -18,5 +18,13 @@ end, {
   end,
 })
 
-vim.keymap.set("n", "<F1>", user_help.select, { desc = "Einfache Neovim-Hilfe" })
-vim.keymap.set("n", "<leader>h", user_help.select, { desc = "Einfache Neovim-Hilfe" })
+vim.keymap.set({ "n", "x", "s" }, "<leader>h", user_help.select, { desc = "Einfache Neovim-Hilfe" })
+vim.keymap.set({ "n", "x", "s" }, "<F1>", user_help.select, { desc = "Einfache Neovim-Hilfe" })
+vim.keymap.set("o", "<leader>h", "<Esc><Cmd>Hilfe<CR>", { desc = "Einfache Neovim-Hilfe" })
+vim.keymap.set("o", "<F1>", "<Esc><Cmd>Hilfe<CR>", { desc = "Einfache Neovim-Hilfe" })
+vim.keymap.set("i", "<F1>", function()
+  vim.cmd.stopinsert()
+  vim.schedule(user_help.select)
+end, { desc = "Einfache Neovim-Hilfe" })
+vim.keymap.set("t", "<F1>", [[<C-\><C-n><Cmd>Hilfe<CR>]], { desc = "Einfache Neovim-Hilfe" })
+vim.keymap.set("c", "<F1>", [[<C-c><Cmd>Hilfe<CR>]], { desc = "Einfache Neovim-Hilfe" })

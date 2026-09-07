@@ -3,9 +3,10 @@
 Diese Konfiguration basiert auf LazyVim und ist für Python, TypeScript/JavaScript,
 C/C++, SQL, Docker, YAML, JSON, Markdown, TOML und LaTeX vorbereitet.
 
-Eine einfache deutsche Bedienhilfe ist direkt eingebaut:
+Eine vollständige, einfache deutsche Bedienhilfe ist direkt eingebaut:
 
-- `F1` oder `<Space> h`: Kapitel auswählen
+- `F1`: aus jedem Modus die Kapitel auswählen
+- `<Space> h`: in jedem normalen Editorfenster die Kapitel auswählen
 - `:Hilfe`: Kapitel auswählen
 - `:Hilfe alles`: komplette Hilfe anzeigen
 - `:Hilfe bewegung`: ein bestimmtes Kapitel direkt öffnen
@@ -91,24 +92,34 @@ Falls die Installation unterbrochen wurde:
 
 ## Bedienung lernen
 
-Auf dem Startbildschirm steht direkt `Hilfe öffnen · F1 oder Space h`. Die Hilfe ist
-nach folgenden Themen gegliedert:
+Auf dem Startbildschirm steht direkt `HILFE öffnen · F1 überall · Space h`.
+Die Hilfe ist nach folgenden Themen gegliedert:
 
 1. Start und Bedienlogik
-2. Bewegung
-3. Text ändern
-4. Dateien und Ordner
-5. Suchen und Ersetzen
-6. Code und Refactoring
-7. Tests
-8. Debugging
-9. Git
-10. Terminal und Aufgaben
-11. Fenster und Beenden
+2. Kompletter Arbeitsablauf
+3. Bewegung im Text
+4. Text hinzufügen und ändern
+5. Auswahl, Operatoren und Textobjekte
+6. Dateien und Ordner
+7. Suchen und Ersetzen
+8. Vervollständigung, Vorschläge und Snippets
+9. Code verstehen und refaktorieren
+10. Fehler, Warnungen und Aufgabenlisten
+11. Tests
+12. Debugging
+13. Sprachen, Docker und Kubernetes
+14. Git
+15. Terminal und Aufgaben
+16. Fenster, Dateien im Speicher und Beenden
+17. Wichtige Befehle, Wartung und Notfälle
+18. Weitere Hilfe
+19. Alle belegten Tastenkürzel als automatisch erzeugter Anhang
 
 Im Hilfefenster wechseln `]k` und `[k` das Kapitel, `m` öffnet die Kapitelwahl und
 `q` schließt die Hilfe. Which-Key zeigt nach dem Drücken der Leertaste außerdem
-alle verfügbaren Folgetasten an.
+alle verfügbaren Folgetasten an. Das letzte Kapitel wird aus der laufenden
+Konfiguration erzeugt und listet alle beschriebenen globalen sowie aktuell
+dateispezifischen Tastenkürzel auf.
 
 ## Projektabhängige Voraussetzungen
 
